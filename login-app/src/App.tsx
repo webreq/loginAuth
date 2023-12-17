@@ -28,9 +28,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<PrivateRoute/>}>
+        {/* <Route element={<PrivateRoute/>}> */}
           <Route path='/' element={<Home/>}/>
-        </Route>
+        {/* </Route> */}
       </Routes>
     </Router>
   )

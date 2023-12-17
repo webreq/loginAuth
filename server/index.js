@@ -8,6 +8,15 @@ const prisma = new PrismaClient()
 app.use(bodyparser.json())
 app.use(cors())
 app.get('/', (req,res)=>{ res.send('Welcome to Web Req')})
+function midleware(req,res,next){
+ // ini midlewre
+ if(req.headers?.webreq==='secret key') return next()
+ return res.json('stuck di midleware')
+}
+
+app.get('/getData',midleware,(req,res)=>{
+    res.json('ok ini data')
+})
 
 app.post('/login',async(req,res)=>{
     const {email,password} = req.body

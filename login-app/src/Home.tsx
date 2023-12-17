@@ -1,9 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios'
 const Home = () => {
     const [count, setCount] = useState(0)
+    useEffect(()=>{
+      async function getData() {
+        const result = await axios.get('http://localhost:5000/getData',{
+          headers:{
+            "webreq":"secret key"
+          }
+        })
+        console.log(result.data)
+      }
+      getData()
+    },[])
   return (
     <>
       <div>
